@@ -11,6 +11,8 @@
                     type="email"
                     name="email"
                     id="email"
+                    value="{{ old('email') }}"
+                    required
                 />
             </div>
             <div class="flex flex-col mt-3">
@@ -20,9 +22,12 @@
                     type="password"
                     name="password"
                     id="password"
+                    required
                 />
             </div>
-
+            @error('warning')
+                <p class="text-red-500 text-xs font-semibold">{{ $message }}</p>
+            @enderror
             <button class="bg-sky-500 p-2 rounded text-white mt-8 w-full" type="submit">Login</button>
         </form>
     </div>

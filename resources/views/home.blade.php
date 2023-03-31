@@ -1,7 +1,21 @@
 <x-layout>
+    @auth
+        <div class="text-center">
+            <h1 class="font-bold text-center">Welcome {{ auth()->user()->name }}!</h1>
+
+            <button form="logout-form" class="underline" type="submit">Log Out</button>
+            <form id="logout-form" class="hidden" action="/logout" method="POST">
+                @csrf
+            </form>
+        </div>
+        @else
+        <div class="flex justify-center">
+            <a class="mb-5 underline text-xl" href="/login">Login</a>
+        </div>
+    @endauth
+
     @if($quote)
         <div class="min-h-screen flex items-center justify-center flex-col">
-            <a class="mb-5 underline text-xl" href="/login">Login</a>
             {{-- Test image --}}
             <img src="https://server5.intermedia.ge/article_images/small/201905/2019051700011137332.jpg"
                  alt="movie picture"
@@ -15,7 +29,6 @@
             </a>
         </div>
         @else
-        <a class="text-center" href="/login">Login</a>
         <p class="text-center">No quotes yet. Please check back later.</p>
     @endif
 </x-layout>
