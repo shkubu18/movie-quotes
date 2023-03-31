@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
+use \App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,8 @@ use App\Http\Controllers\MovieController;
 Route::get('/', [QuoteController::class, 'index'])->name('home');
 
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show']);
+
+Route::get('login', [SessionController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionController::class, 'store'])->middleware('guest');
+
+Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
