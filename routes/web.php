@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\QuoteController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use \App\Http\Controllers\QuoteController;
 */
 
 Route::get('/', [QuoteController::class, 'index'])->name('home');
+
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show']);
