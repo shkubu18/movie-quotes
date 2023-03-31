@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Quote extends Model
+class Movie extends Model
 {
     use HasFactory;
 
-    public function movie()
+    public function quotes(): HasMany
     {
-        return $this->belongsTo(Movie::class);
+        return $this->hasMany(Quote::class);
     }
 }
