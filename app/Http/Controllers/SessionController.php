@@ -29,13 +29,13 @@ class SessionController extends Controller
 
         session()->regenerate();
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function destroy(): RedirectResponse
     {
         auth()->logout();
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 }
