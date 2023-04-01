@@ -5,6 +5,7 @@ use \App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
 use \App\Http\Controllers\SessionController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
+use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,8 @@ Route::middleware('auth')->group(function () {
         ->name('movies_create');
     Route::post('/admin/movies', [AdminMovieController::class, 'store'])
         ->name('movies_store');
+    Route::get('/admin/quotes/create', [AdminQuoteController::class, 'create'])
+        ->name('quotes_create');
+    Route::post('/admin/quotes', [AdminQuoteController::class, 'store'])
+        ->name('quotes_store');
 });
