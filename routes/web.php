@@ -30,4 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
     Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])
         ->name('movies_create');
+    Route::post('/admin/movies', [AdminMovieController::class, 'store'])
+        ->name('movies_store');
 });
