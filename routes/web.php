@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
 use \App\Http\Controllers\SessionController;
+use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,7 @@ Route::middleware('guest')->group(function () {
 Route::post('logout', [SessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
+
+Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])
+    ->middleware('auth')
+    ->name('movies_create');
