@@ -18,9 +18,13 @@ use \App\Http\Controllers\SessionController;
 
 Route::get('/', [QuoteController::class, 'index'])->name('home');
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'show']);
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie');
 
-Route::get('login', [SessionController::class, 'create'])->middleware('guest');
-Route::post('login', [SessionController::class, 'store'])->middleware('guest');
+Route::middleware('guest')->group(function () {
+    Route::get('login', [SessionController::class, 'create'])->name('login');
+    Route::post('login', [SessionController::class, 'store'])->name('login');
+});
 
-Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::post('logout', [SessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
