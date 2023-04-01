@@ -7,17 +7,19 @@ use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class QuoteController extends Controller
 {
-    public function create()
+    public function create(): View
     {
         return view('admin.quotes.create', [
             'movies' => Movie::all()
         ]);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $attributes = $this->validateQuote();
 
