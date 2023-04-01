@@ -26,10 +26,8 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [SessionController::class, 'store'])->name('login');
 });
 
-Route::post('logout', [SessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');
-
-Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])
-    ->middleware('auth')
-    ->name('movies_create');
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
+    Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])
+        ->name('movies_create');
+});
