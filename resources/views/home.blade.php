@@ -3,6 +3,8 @@
         <div class="text-center">
             <h1 class="font-bold text-center">Welcome {{ auth()->user()->name }}!</h1>
 
+            <a class="underline mr-5" href="/admin/movies/create">Add new movie</a>
+
             <button form="logout-form" class="underline" type="submit">Log Out</button>
             <form id="logout-form" class="hidden" action="/logout" method="POST">
                 @csrf
