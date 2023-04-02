@@ -22,14 +22,4 @@ class MovieController extends Controller
 
         return redirect()->route('home');
     }
-
-    protected function validateMovie(?Movie $movie = null): array
-    {
-        $movie ??= new Movie();
-
-        return request()->validate([
-            'name' => 'required',
-            'slug' => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
-        ]);
-    }
 }
