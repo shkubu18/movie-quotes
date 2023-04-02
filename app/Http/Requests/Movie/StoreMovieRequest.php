@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Movie;
 
+use App\Models\Movie;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMovieRequest extends FormRequest
 {
@@ -19,10 +21,11 @@ class StoreMovieRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules(Movie $movie): array
     {
         return [
-            //
+            'name' => 'required',
+            'slug' => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
         ];
     }
 }
