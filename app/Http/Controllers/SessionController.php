@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthAttemptRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -14,12 +15,12 @@ class SessionController extends Controller
         return view('login');
     }
 
-    public function store(): RedirectResponse
+    public function store(AuthAttemptRequest $request): RedirectResponse
     {
-        $attributes = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $attributes = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
         if (!auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
