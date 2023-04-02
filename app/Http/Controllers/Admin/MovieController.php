@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Movie\StoreMovieRequest;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -16,9 +17,12 @@ class MovieController extends Controller
         return view('admin.movies.create');
     }
 
-    public function store(): RedirectResponse
+    public function store(StoreMovieRequest $request): RedirectResponse
     {
-        Movie::create($this->validateMovie());
+        Movie::create([
+            'name' => $request->name,
+            'slug' => $request->slug
+        ]);
 
         return redirect()->route('home');
     }
