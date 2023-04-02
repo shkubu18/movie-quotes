@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Quote\StoreQuoteRequest;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Http\Request;
@@ -19,9 +20,13 @@ class QuoteController extends Controller
         ]);
     }
 
-    public function store(): RedirectResponse
+    public function store(StoreQuoteRequest $request): RedirectResponse
     {
-        $attributes = $this->validateQuote();
+        $attributes = [
+            'name' => $request->name,
+            'movie_picture' => $request->movie_picture,
+            'movie_id' => $request->movie_id
+        ];
 
         $attributes['movie_picture'] = request()->file('movie_picture')->store('pictures');
 
