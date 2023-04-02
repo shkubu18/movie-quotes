@@ -29,15 +29,4 @@ class QuoteController extends Controller
 
         return redirect()->route('home');
     }
-
-    protected function validateQuote(?Quote $quote = null): array
-    {
-        $quote ??= new Quote();
-
-        return request()->validate([
-            'name' => 'required',
-            'movie_picture' => 'required|image',
-            'movie_id' => ['required', Rule::exists('movies', 'id')]
-        ]);
-    }
 }
