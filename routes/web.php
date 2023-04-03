@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\QuoteController;
+use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
-use \App\Http\Controllers\SessionController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 
