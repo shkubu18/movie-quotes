@@ -8,11 +8,11 @@ use Illuminate\Validation\Rule;
 
 class StoreMovieRequest extends FormRequest
 {
-    public function rules(Movie $movie): array
-    {
-        return [
-            'name' => 'required',
-            'slug' => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
-        ];
-    }
+	public function rules(Movie $movie): array
+	{
+		return [
+			'name' => 'required',
+			'slug' => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
+		];
+	}
 }
