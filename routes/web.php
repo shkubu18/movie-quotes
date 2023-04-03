@@ -37,4 +37,12 @@ Route::middleware('auth')->group(function () {
 		->name('quotes_create');
 	Route::post('/admin/quotes', [AdminQuoteController::class, 'store'])
 		->name('quotes_store');
+	Route::get('/admin/movies/dashboard', [AdminMovieController::class, 'index'])
+		->name('movies_dashboard');
+	Route::get('/admin/movies/{movie}/edit', [AdminMovieController::class, 'edit'])
+		->name('movies_edit');
+	Route::patch('/admin/movies/{movie}', [AdminMovieController::class, 'update'])
+		->name('movies_update');
+	Route::delete('/admin/movies/{movie}', [AdminMovieController::class, 'destroy'])
+		->name('movies_delete');
 });
