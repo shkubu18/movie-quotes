@@ -29,20 +29,26 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 	Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
-	Route::get('/admin/movies/create', [AdminMovieController::class, 'create'])
-		->name('movies_create');
-	Route::post('/admin/movies', [AdminMovieController::class, 'store'])
-		->name('movies_store');
-	Route::get('/admin/quotes/create', [AdminQuoteController::class, 'create'])
+
+	Route::controller(AdminMovieController::class)->group(function () {
+		Route::get('/admin/movies/create', 'create')
+			->name('movies_create');
+		Route::post('/admin/movies', 'store')
+			->name('movies_store');
+		Route::get('/admin/movies/dashboard', 'index')
+			->name('movies_dashboard');
+		Route::get('/admin/movies/{movie}/edit', 'edit')
+			->name('movies_edit');
+		Route::patch('/admin/movies/{movie}', 'update')
+			->name('movies_update');
+		Route::delete('/admin/movies/{movie}', 'destroy')
+			->name('movies_delete');
+	});
+
+	Route::controller(AdminQuoteController::class)->group(function () {
+		Route::get('/admin/quotes/create', 'create')
 		->name('quotes_create');
-	Route::post('/admin/quotes', [AdminQuoteController::class, 'store'])
-		->name('quotes_store');
-	Route::get('/admin/movies/dashboard', [AdminMovieController::class, 'index'])
-		->name('movies_dashboard');
-	Route::get('/admin/movies/{movie}/edit', [AdminMovieController::class, 'edit'])
-		->name('movies_edit');
-	Route::patch('/admin/movies/{movie}', [AdminMovieController::class, 'update'])
-		->name('movies_update');
-	Route::delete('/admin/movies/{movie}', [AdminMovieController::class, 'destroy'])
-		->name('movies_delete');
+		Route::post('/admin/quotes', 'store')
+			->name('quotes_store');
+	});
 });
