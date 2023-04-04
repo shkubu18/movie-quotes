@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 	Route::controller(AdminMovieController::class)->group(function () {
-		Route::get('/admin/movies/create', 'create')
+		Route::view('/admin/movies/create', 'admin.movies.create')
 			->name('movies.create');
 		Route::post('/admin/movies', 'store')
 			->name('movies.store');
