@@ -50,5 +50,15 @@ Route::middleware('auth')->group(function () {
 		->name('quotes_create');
 		Route::post('/admin/quotes', 'store')
 			->name('quotes_store');
+		Route::get('/admin/quotes/dashboard', 'index')
+			->name('quotes_dashboard');
+		Route::get('/admin/quotes/{quote}/edit', 'edit')
+			->name('quotes_edit');
+		Route::patch('/admin/quotes/{quote}', 'update')
+			->name('quotes_update');
+		Route::delete('/admin/quotes/{quote}', 'destroy')
+			->name('quotes_delete');
 	});
+
+    Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote');
 });
