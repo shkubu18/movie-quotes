@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 
 Route::get('/', [QuoteController::class, 'index'])->name('home');
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie');
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
 
 Route::middleware('guest')->group(function () {
 	Route::view('login', 'login')->name('login.page');
@@ -60,5 +60,5 @@ Route::middleware('auth')->group(function () {
 			->name('quotes.destroy');
 	});
 
-	Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote');
+	Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote.show');
 });
