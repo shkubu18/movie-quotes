@@ -30,6 +30,7 @@ class QuoteController extends Controller
 	{
 		$attributes = [
 			'name'          => $request->name,
+			'slug'          => $request->slug,
 			'movie_picture' => $request->movie_picture,
 			'movie_id'      => $request->movie_id,
 		];
