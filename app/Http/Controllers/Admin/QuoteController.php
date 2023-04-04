@@ -61,7 +61,7 @@ class QuoteController extends Controller
 
 		$quote->update($attributes);
 
-		return redirect()->route('quotes_dashboard');
+		return redirect()->route('quotes.index');
 	}
 
 	public function destroy(Quote $quote): RedirectResponse

@@ -47,17 +47,17 @@ Route::middleware('auth')->group(function () {
 
 	Route::controller(AdminQuoteController::class)->group(function () {
 		Route::get('/admin/quotes/create', 'create')
-		->name('quotes_create');
+		->name('quotes.create');
 		Route::post('/admin/quotes', 'store')
-			->name('quotes_store');
+			->name('quotes.store');
 		Route::get('/admin/quotes/dashboard', 'index')
-			->name('quotes_dashboard');
+			->name('quotes.index');
 		Route::get('/admin/quotes/{quote}/edit', 'edit')
-			->name('quotes_edit');
+			->name('quotes.edit');
 		Route::patch('/admin/quotes/{quote}', 'update')
-			->name('quotes_update');
+			->name('quotes.update');
 		Route::delete('/admin/quotes/{quote}', 'destroy')
-			->name('quotes_delete');
+			->name('quotes.destroy');
 	});
 
 	Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote');
