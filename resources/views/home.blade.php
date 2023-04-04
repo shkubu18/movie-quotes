@@ -6,6 +6,7 @@
             <a class="underline mr-5" href="/admin/movies/create">Add new movie</a>
             <a class="underline mr-5" href="/admin/quotes/create">Add new quote</a>
             <a class="underline mr-5" href="/admin/movies/dashboard">Dashboard for movies</a>
+            <a class="underline mr-5" href="/admin/quotes/dashboard">Dashboard for quotes</a>
 
             <button form="logout-form" class="underline" type="submit">Log Out</button>
             <form id="logout-form" class="hidden" action="/logout" method="POST">
