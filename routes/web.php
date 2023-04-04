@@ -32,17 +32,17 @@ Route::middleware('auth')->group(function () {
 
 	Route::controller(AdminMovieController::class)->group(function () {
 		Route::get('/admin/movies/create', 'create')
-			->name('movies_create');
+			->name('movies.create');
 		Route::post('/admin/movies', 'store')
-			->name('movies_store');
+			->name('movies.store');
 		Route::get('/admin/movies/dashboard', 'index')
-			->name('movies_dashboard');
+			->name('movies.index');
 		Route::get('/admin/movies/{movie}/edit', 'edit')
-			->name('movies_edit');
+			->name('movies.edit');
 		Route::patch('/admin/movies/{movie}', 'update')
-			->name('movies_update');
+			->name('movies.update');
 		Route::delete('/admin/movies/{movie}', 'destroy')
-			->name('movies_delete');
+			->name('movies.destroy');
 	});
 
 	Route::controller(AdminQuoteController::class)->group(function () {

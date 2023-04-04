@@ -47,7 +47,7 @@ class MovieController extends Controller
 			'slug' => $request->slug,
 		]);
 
-		return redirect()->route('movies_dashboard');
+		return redirect()->route('movies.index');
 	}
 
 	public function destroy(Movie $movie): RedirectResponse
