@@ -28,16 +28,10 @@ class QuoteController extends Controller
 
 	public function store(StoreQuoteRequest $request): RedirectResponse
 	{
-		$attributes = [
-			'name'          => $request->name,
-			'slug'          => $request->slug,
-			'movie_picture' => $request->movie_picture,
-			'movie_id'      => $request->movie_id,
-		];
-
-		$attributes['movie_picture'] = request()->file('movie_picture')->store('pictures');
-
-		Quote::create($attributes);
+		Quote::create($request->validated() +
+			[
+				'movie_picture' => request()->file('movie_picture')->store('pictures'),
+			]);
 
 		return redirect()->route('home');
 	}
