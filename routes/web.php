@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 
@@ -23,12 +23,12 @@ Route::get('/', [QuoteController::class, 'index'])->name('home');
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie');
 
 Route::middleware('guest')->group(function () {
-	Route::get('login', [SessionController::class, 'create'])->name('login');
-	Route::post('login', [SessionController::class, 'store'])->name('login');
+	Route::get('login', [AuthController::class, 'create'])->name('login');
+	Route::post('login', [AuthController::class, 'store'])->name('login');
 });
 
 Route::middleware('auth')->group(function () {
-	Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
+	Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
 	Route::controller(AdminMovieController::class)->group(function () {
 		Route::get('/admin/movies/create', 'create')
@@ -60,5 +60,5 @@ Route::middleware('auth')->group(function () {
 			->name('quotes_delete');
 	});
 
-    Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote');
+	Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote');
 });
