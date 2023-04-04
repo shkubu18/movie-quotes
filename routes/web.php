@@ -23,12 +23,12 @@ Route::get('/', [QuoteController::class, 'index'])->name('home');
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie');
 
 Route::middleware('guest')->group(function () {
-	Route::get('login', [AuthController::class, 'create'])->name('login');
-	Route::post('login', [AuthController::class, 'store'])->name('login');
+	Route::view('login', 'login')->name('login.page');
+	Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
 Route::middleware('auth')->group(function () {
-	Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
+	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 	Route::controller(AdminMovieController::class)->group(function () {
 		Route::get('/admin/movies/create', 'create')

@@ -8,14 +8,9 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-	public function store(AuthAttemptRequest $request): RedirectResponse
+	public function login(AuthAttemptRequest $request): RedirectResponse
 	{
-		$attributes = [
-			'email'    => $request->email,
-			'password' => $request->password,
-		];
-
-		if (!auth()->attempt($attributes))
+		if (!auth()->attempt($request->validated()))
 		{
 			throw ValidationException::withMessages([
 				'warning' => 'Incorrect email or password.',
@@ -27,7 +22,7 @@ class AuthController extends Controller
 		return redirect()->route('home');
 	}
 
-	public function destroy(): RedirectResponse
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 
