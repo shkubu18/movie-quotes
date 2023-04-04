@@ -18,17 +18,9 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function create(): View
-	{
-		return view('admin.movies.create');
-	}
-
 	public function store(StoreMovieRequest $request): RedirectResponse
 	{
-		Movie::create([
-			'name' => $request->name,
-			'slug' => $request->slug,
-		]);
+		Movie::create($request->validated());
 
 		return redirect()->route('home');
 	}
@@ -42,10 +34,7 @@ class MovieController extends Controller
 
 	public function update(UpdateMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$movie->update([
-			'name' => $request->name,
-			'slug' => $request->slug,
-		]);
+		$movie->update($request->validated());
 
 		return redirect()->route('movies.index');
 	}
