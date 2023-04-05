@@ -6,6 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
+use App\Http\Controllers\LangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 */
 
 Route::get('/', [QuoteController::class, 'index'])->name('home');
+
+Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
 
