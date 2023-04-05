@@ -28,13 +28,7 @@ class QuoteController extends Controller
 
 	public function store(StoreQuoteRequest $request): RedirectResponse
 	{
-		$attributes = [
-			'name'          => $request->name,
-			'slug'          => $request->slug,
-			'movie_picture' => $request->movie_picture,
-			'movie_id'      => $request->movie_id,
-		];
-
+		$attributes = $request->validated();
 		$attributes['movie_picture'] = request()->file('movie_picture')->store('pictures');
 
 		Quote::create($attributes);
@@ -61,7 +55,7 @@ class QuoteController extends Controller
 
 		$quote->update($attributes);
 
-		return redirect()->route('quotes_dashboard');
+		return redirect()->route('quotes.index');
 	}
 
 	public function destroy(Quote $quote): RedirectResponse
