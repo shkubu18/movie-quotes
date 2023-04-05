@@ -1,5 +1,9 @@
 <x-layout>
-    @auth
+    <div class="flex">
+        <a href="{{ route('language.set', ['lang' => 'en']) }}" class="mr-3">EN</a>
+        <a href="{{ route('language.set', ['lang' => 'ka']) }}">KA</a>
+    </div>
+@auth
         <div class="text-center">
             <h1 class="font-bold text-center">Welcome {{ auth()->user()->name }}!</h1>
 
@@ -31,7 +35,7 @@
                 href="/movies/{{ $quote->movie->slug }}"
                 class="underline"
             >
-                {{ $quote->movie->name }}
+                {{ $quote->movie->getTranslation('name', session('language')) }}
             </a>
         </div>
         @else

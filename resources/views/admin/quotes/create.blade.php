@@ -6,13 +6,24 @@
                 @csrf
 
                 <div class="flex flex-col">
-                    <label class="text-lg" for="name">Quote Name</label>
+                    <label class="text-lg" for="name_en">Quote Name (English)</label>
                     <input
                         class="border border-gray-200 p-2 rounded"
                         type="text"
-                        name="name"
-                        id="name"
-                        value="{{ old('name') }}"
+                        name="name_en"
+                        id="name_en"
+                        value="{{ old('name_en') }}"
+                        required
+                    />
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-lg" for="name_ka">Quote Name (Georgian)</label>
+                    <input
+                        class="border border-gray-200 p-2 rounded"
+                        type="text"
+                        name="name_ka"
+                        id="name_ka"
+                        value="{{ old('name_ka') }}"
                         required
                     />
                 </div>
