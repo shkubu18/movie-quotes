@@ -17,17 +17,6 @@
                     />
                 </div>
                 <div class="flex flex-col mt-3">
-                    <label class="text-lg" for="slug">Slug</label>
-                    <input
-                        class="border border-gray-200 p-2 rounded"
-                        type="text"
-                        name="slug"
-                        id="slug"
-                        value="{{ old('slug') }}"
-                        required
-                    />
-                </div>
-                <div class="flex flex-col mt-3">
                     <label class="text-lg" for="movie_picture">Choose a frame of the film</label>
                     <input
                         class="border border-gray-200 p-2 rounded"

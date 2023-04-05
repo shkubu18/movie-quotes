@@ -59,6 +59,4 @@ Route::middleware('auth')->group(function () {
 		Route::delete('/admin/quotes/{quote}', 'destroy')
 			->name('quotes.destroy');
 	});
-
-	Route::get('/quotes/{quote:slug}', [QuoteController::class, 'show'])->name('quote.show');
 });

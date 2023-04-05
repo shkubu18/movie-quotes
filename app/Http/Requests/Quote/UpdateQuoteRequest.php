@@ -13,7 +13,6 @@ class UpdateQuoteRequest extends FormRequest
 
 		return [
 			'name'          => 'required',
-			'slug'          => ['required', Rule::unique('movies', 'slug')->ignore($quote)],
 			'movie_picture' => $quote->exists ? ['image'] : ['required', 'image'],
 			'movie_id'      => ['required', Rule::exists('movies', 'id')],
 		];
