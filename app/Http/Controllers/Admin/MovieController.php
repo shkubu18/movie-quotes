@@ -18,9 +18,14 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function store(StoreMovieRequest $request): RedirectResponse
+	public function store(StoreMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		Movie::create($request->validated());
+		$validated = $request->validated();
+
+		$movie->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
+		$movie->slug = $request->input('slug');
+
+		$movie->save();
 
 		return redirect()->route('home');
 	}
