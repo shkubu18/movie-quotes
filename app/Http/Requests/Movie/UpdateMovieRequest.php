@@ -12,8 +12,9 @@ class UpdateMovieRequest extends FormRequest
 		$movie = $this->route('movie');
 
 		return [
-			'name' => 'required',
-			'slug' => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
+			'name_en' => 'required|string',
+			'name_ka' => 'required|string',
+			'slug'    => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
 		];
 	}
 }
