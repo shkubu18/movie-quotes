@@ -28,8 +28,7 @@ class QuoteController extends Controller
 
 	public function store(StoreQuoteRequest $request, Quote $quote): RedirectResponse
 	{
-		$validated = $request->validated();
-		$this->saveQuote($quote, $validated);
+		$this->saveQuote($quote, $request->validated());
 
 		return redirect()->route('home');
 	}
@@ -44,8 +43,7 @@ class QuoteController extends Controller
 
 	public function update(UpdateQuoteRequest $request, Quote $quote): RedirectResponse
 	{
-		$validated = $request->validated();
-		$this->saveQuote($quote, $validated);
+		$this->saveQuote($quote, $request->validated());
 
 		return redirect()->route('quotes.index');
 	}

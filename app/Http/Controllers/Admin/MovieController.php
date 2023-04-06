@@ -20,8 +20,7 @@ class MovieController extends Controller
 
 	public function store(StoreMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$validated = $request->validated();
-		$this->saveMovie($movie, $validated);
+		$this->saveMovie($movie, $request->validated());
 
 		return redirect()->route('home');
 	}
@@ -35,8 +34,7 @@ class MovieController extends Controller
 
 	public function update(UpdateMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$validated = $request->validated();
-		$this->saveMovie($movie, $validated);
+		$this->saveMovie($movie, $request->validated());
 
 		return redirect()->route('movies.index');
 	}
