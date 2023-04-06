@@ -19,7 +19,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <button>{{ __('dashboard.delete' }}</button>
+                        <button>{{ __('dashboard.delete') }}</button>
                     </form>
                 </div>
             @endforeach

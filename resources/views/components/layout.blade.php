@@ -8,7 +8,8 @@
     @vite('resources/css/app.css')
     <title>Movie-Quotes</title>
 </head>
-<body>
+<body class="min-h-screen bg-gradient-to-br from-zinc-500 to-zinc-900 text-white">
+    <x-aside/>
     {{ $slot }}
 </body>
 </html>
