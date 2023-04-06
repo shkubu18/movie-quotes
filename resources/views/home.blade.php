@@ -52,12 +52,12 @@
                 src="{{ asset('storage/' . $quote->movie_picture) }}"
                 alt="movie picture"
             />
-            <h1>{{ $quote->getTranslation('name', session('language')) }}</h1>
+            <h1>{{ $quote->getTranslation('name', session('language', 'en')) }}</h1>
             <a
                 href="/movies/{{ $quote->movie->slug }}"
                 class="underline"
             >
-                {{ $quote->movie->getTranslation('name', session('language')) }}
+                {{ $quote->movie->getTranslation('name', session('language', 'en')) }}
             </a>
         </div>
     @endif
