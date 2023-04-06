@@ -6,7 +6,14 @@ class LangController extends Controller
 {
 	public function setLanguage($lang)
 	{
-		session()->put('language', $lang);
-		return redirect()->back();
+		if ($lang === 'en' | $lang === 'ka')
+		{
+			session()->put('language', $lang);
+			return redirect()->back();
+		}
+		else
+		{
+			abort(404);
+		}
 	}
 }
