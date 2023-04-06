@@ -3,7 +3,7 @@
 @if($quote)
     <div class="flex items-center justify-center flex-col">
         <img
-            class="w-7/12 rounded-lg my-5 object-cover"
+            class="rounded-lg my-7 object-cover w-[500px] h-[300px]"
             src="{{ asset('storage/' . $quote->movie_picture) }}"
             alt="movie picture"
         />
