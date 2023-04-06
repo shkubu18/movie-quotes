@@ -21,11 +21,7 @@ class MovieController extends Controller
 	public function store(StoreMovieRequest $request, Movie $movie): RedirectResponse
 	{
 		$validated = $request->validated();
-
-		$movie->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
-		$movie->slug = $request->input('slug');
-
-		$movie->save();
+		$this->saveMovie($movie, $validated);
 
 		return redirect()->route('home');
 	}
@@ -39,9 +35,18 @@ class MovieController extends Controller
 
 	public function update(UpdateMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$movie->update($request->validated());
+		$validated = $request->validated();
+		$this->saveMovie($movie, $validated);
 
 		return redirect()->route('movies.index');
+	}
+
+	private function saveMovie(Movie $movie, array $validated): void
+	{
+		$movie->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
+		$movie->slug = $validated['slug'];
+
+		$movie->save();
 	}
 
 	public function destroy(Movie $movie): RedirectResponse
