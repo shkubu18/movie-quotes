@@ -6,4 +6,6 @@ return [
 	'movie_name_ka'           => 'Movie Name (Georgian)',
 	'slug'                    => 'Slug',
 	'button'                  => 'Create new movie',
+	'edit_heading'            => 'Edit movie',
+	'update_btn'              => 'Update',
 ];
