@@ -7,19 +7,19 @@
                         class="mr-5"
                         href="/movies/{{ $movie->slug }}"
                     >
-                        {{ $movie->getTranslation('name', session('language')) }}
+                        {{ $movie->getTranslation('name', app()->getLocale()) }}
                     </a>
                     <a
                         class="mr-5"
                         href="/admin/movies/{{ $movie->id }}/edit"
                     >
-                        {{ __('dashboard.edit', [], session('language')) }}
+                        {{ __('dashboard.edit') }}
                     </a>
                     <form action="/admin/movies/{{ $movie->id }}" method="POST">
                         @csrf
                         @method('DELETE')
 
-                        <button>{{ __('dashboard.delete', [], session('language')) }}</button>
+                        <button>{{ __('dashboard.delete' }}</button>
                     </form>
                 </div>
             @endforeach

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+
 class LangController extends Controller
 {
-	public function setLanguage($lang)
+	public function setLanguage($lang): RedirectResponse
 	{
-		if ($lang === 'en' | $lang === 'ka')
-		{
-			session()->put('language', $lang);
-			return redirect()->back();
-		}
-		else
-		{
-			abort(404);
-		}
+		App::setLocale($lang);
+		Session::put('locale', $lang);
+
+		return redirect()->back();
 	}
 }
