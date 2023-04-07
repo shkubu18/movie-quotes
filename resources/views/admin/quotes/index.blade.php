@@ -1,11 +1,15 @@
 <x-layout>
     <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
+
     <div class="flex justify-center items-center min-h-screen">
-        <div class="flex flex-col items-center rounded-3xl mx-16 min-w-[700px] bg-slate-600 p-7">
-            <h1 class="text-3xl mb-10">{{ __('dashboard.quotes_dashboard') }}</h1>
+        <div class="flex flex-col items-center rounded-xl mx-16 w-[700px] bg-slate-200 p-7">
+            <h1 class="text-3xl text-indigo-600 mb-10">{{ __('dashboard.quotes_dashboard') }}</h1>
             @foreach($quotes as $quote)
-                <div class="flex items-center justify-between overflow-auto bg-slate-400 rounded p-2.5 w-full {{ !$loop->first ? ' mt-3' : '' }}">
-                    <h2 class="mr-5">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
+                <div
+                    class="flex items-center justify-between overflow-auto border-2 border-gray-300 text-gray-700
+                    rounded-xl p-3 w-full hover:bg-slate-50 duration-500 {{ !$loop->first ? ' mt-3' : '' }}"
+                >
+                    <h2 class="mr-5 font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
                     <div class="flex items-center">
                         <img
                             class="mr-5 rounded h-[60px] w-[90px]"
@@ -22,7 +26,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button class="text-red-600">{{ __('dashboard.delete') }}</button>
+                            <button class="text-gray-400">{{ __('dashboard.delete') }}</button>
                         </form>
                     </div>
                 </div>
