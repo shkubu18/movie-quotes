@@ -13,11 +13,4 @@ class QuoteController extends Controller
 			'quote' => $quote->inRandomOrder()->first(),
 		]);
 	}
-
-	public function show(Quote $quote): View
-	{
-		return view('admin.quotes.show', [
-			'quote'  => $quote,
-		]);
-	}
 }
