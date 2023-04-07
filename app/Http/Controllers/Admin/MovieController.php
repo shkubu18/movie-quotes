@@ -13,7 +13,7 @@ class MovieController extends Controller
 {
 	public function index(): View
 	{
-		return view('admin.movies.dashboard', [
+		return view('admin.movies.index', [
 			'movies' => Movie::all(),
 		]);
 	}

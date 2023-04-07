@@ -23,7 +23,7 @@ Route::get('/', [QuoteController::class, 'index'])->name('home');
 
 Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('admin.movies.show');
 
 Route::middleware('guest')->group(function () {
 	Route::view('login', 'login')->name('login.page');

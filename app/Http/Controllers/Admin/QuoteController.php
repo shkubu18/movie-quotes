@@ -14,7 +14,7 @@ class QuoteController extends Controller
 {
 	public function index(): View
 	{
-		return view('admin.quotes.dashboard', [
+		return view('admin.quotes.index', [
 			'quotes' => Quote::all(),
 		]);
 	}
