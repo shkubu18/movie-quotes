@@ -9,7 +9,7 @@ class MovieController extends Controller
 {
 	public function show(Movie $movie): View
 	{
-		return view('admin.movies.show', [
+		return view('movies.show', [
 			'movie'  => $movie,
 			'quotes' => $movie->quotes,
 		]);
