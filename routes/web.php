@@ -26,8 +26,8 @@ Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('la
 Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('admin.movies.show');
 
 Route::middleware('guest')->group(function () {
-	Route::view('login', 'login')->name('login.page');
-	Route::post('login', [AuthController::class, 'login'])->name('login');
+	Route::view('login', 'auth.login')->name('auth.login.page');
+	Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 });
 
 Route::middleware('auth')->group(function () {
