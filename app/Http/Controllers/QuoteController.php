@@ -9,7 +9,7 @@ class QuoteController extends Controller
 {
 	public function index(Quote $quote): View
 	{
-		return view('home', [
+		return view('quotes.index', [
 			'quote' => $quote->inRandomOrder()->first(),
 		]);
 	}
