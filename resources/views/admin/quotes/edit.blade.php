@@ -19,7 +19,7 @@
                         label="quote_form.quote_name_ka"
                         :value="old('name_ka', $quote->getTranslation('name', 'ka'))"
                     />
-                    <div>
+                    <div class="mb-2">
                         <x-form.input
                             class="text-white"
                             name="movie_picture"
@@ -29,7 +29,7 @@
                         />
                         <img
                             width="90"
-                            class="rounded mt-2"
+                            class="rounded"
                             src="{{ asset('storage/' . $quote->movie_picture) }}"
                             alt="movie picture"
                         >
