@@ -19,7 +19,7 @@ use App\Http\Controllers\LangController;
 |
 */
 
-Route::get('/', [QuoteController::class, 'index'])->name('home');
+Route::get('/', [QuoteController::class, 'index'])->name('quotes.index');
 
 Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
