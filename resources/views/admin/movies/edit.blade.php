@@ -1,4 +1,5 @@
 <x-layout>
+    <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
     <div class="min-h-screen flex items-center justify-center flex-col">
         <h1
             class="mb-10 text-3xl text-center whitespace-pre-wrap"

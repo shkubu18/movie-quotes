@@ -1,7 +1,7 @@
 <x-layout>
     <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
     <div class="flex justify-center items-center min-h-screen">
-        <div class="flex flex-col items-center rounded mx-16 min-w-[700px]">
+        <div class="flex flex-col items-center rounded-3xl mx-16 min-w-[700px] bg-slate-600 p-7">
             <h1 class="text-3xl mb-10">{{ __('dashboard.movies_dashboard') }}</h1>
             @foreach($movies as $movie)
                 <div
@@ -20,7 +20,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button class="text-gray-500">{{ __('dashboard.delete') }}</button>
+                            <button class="text-red-600">{{ __('dashboard.delete') }}</button>
                         </form>
                     </div>
                 </div>
