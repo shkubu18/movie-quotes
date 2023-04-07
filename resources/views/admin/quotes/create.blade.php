@@ -1,71 +1,19 @@
 <x-layout>
     <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
     @if($movies->count())
-        <div class="min-h-screen flex items-center justify-center flex-col">
-            <div class="w-1/4 flex flex-col">
+        <x-container>
                 <h1 class="mb-10 text-3xl text-center">{{ __('quote_form.heading') }}</h1>
-                <form action="/admin/quotes" method="POST" enctype="multipart/form-data">
+                <form class="w-1/4" action="/admin/quotes" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="flex flex-col">
-                        <label class="text-lg" for="name_en">{{ __('quote_form.quote_name_en') }}</label>
-                        <input
-                            class="border border-gray-200 p-2 rounded text-black"
-                            type="text"
-                            name="name_en"
-                            id="name_en"
-                            value="{{ old('name_en') }}"
-                            required
-                        />
-                    </div>
-                    <div class="flex flex-col mt-3">
-                        <label class="text-lg" for="name_ka">{{ __('quote_form.quote_name_ka') }}</label>
-                        <input
-                            class="border border-gray-200 p-2 rounded text-black"
-                            type="text"
-                            name="name_ka"
-                            id="name_ka"
-                            value="{{ old('name_ka') }}"
-                            required
-                        />
-                    </div>
-                    <div class="flex flex-col mt-3">
-                        <label class="text-lg" for="movie_picture">{{ __('quote_form.film') }}</label>
-                        <input
-                            class="border-2 border-gray-200 p-2 rounded"
-                            type="file"
-                            name="movie_picture"
-                            id="movie_picture"
-                            required
-                        />
+                    <x-form.input name="name_en" type="text" label="quote_form.quote_name_en" />
+                    <x-form.input name="name_ka" type="text" label="quote_form.quote_name_ka" />
+                    <x-form.input class="text-white" name="movie_picture" type="file" label="quote_form.film" />
+                    <x-form.movie-dropdown :movies="$movies" hint="create_form"/>
 
-                    </div>
-
-                    <div class="flex flex-col mt-3">
-                        <label class="text-lg" for="movie">{{ __('quote_form.select_movie') }}</label>
-                        <select
-                            class="py-2.5 px-2 rounded-md bg-gray-100 text-black"
-                            name="movie_id"
-                            id="movie"
-                        >
-                            @foreach($movies as $movie)
-                                <option
-                                    value="{{ $movie->id }}"
-                                    {{ old('movie_id') === $movie->id ? 'selected' : '' }}
-                                >
-                                    {{ ucwords($movie->getTranslation('name', app()->getLocale())) }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button
-                        class="bg-sky-500 p-2 rounded text-white mt-8 w-full"
-                        type="submit"
-                    >{{ __('quote_form.button') }}
-                    </button>
+                    <x-form.button>{{ __('quote_form.button') }}</x-form.button>
                 </form>
-            </div>
-        </div>
+        </x-container>
         @else
         <div class="flex items-center flex-col">
             <p

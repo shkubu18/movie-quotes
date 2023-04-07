@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="min-h-screen flex items-center flex-col justify-center">
+    <x-container>
         <x-header/>
         <x-quote :quote="$quote"/>
-    </div>
+    </x-container>
 </x-layout>

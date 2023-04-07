@@ -1,7 +1,6 @@
 @props(['quote'])
 
 @if($quote)
-    <div class="flex items-center justify-center flex-col">
         <img
             class="rounded-lg my-7 object-cover w-[500px] h-[300px]"
             src="{{ asset('storage/' . $quote->movie_picture) }}"
@@ -14,5 +13,4 @@
         >
             {{ $quote->movie->getTranslation('name', app()->getLocale()) }}
         </a>
-    </div>
 @endif
