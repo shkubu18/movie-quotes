@@ -7,9 +7,27 @@
                 <form class="w-1/4" action="/admin/quotes" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <x-form.input name="name_en" type="text" label="quote_form.quote_name_en" hint="quote" />
-                    <x-form.input name="name_ka" type="text" label="quote_form.quote_name_ka" hint="quote" />
-                    <x-form.input class="text-white" name="movie_picture" type="file" label="quote_form.film" hint="quote" />
+                    <x-form.input
+                        name="name_en"
+                        type="text"
+                        label="quote_form.name_en"
+                        hint="quote"
+                        placeholder="{{ __('quote_form.name_en_placeholder') }}"
+                    />
+                    <x-form.input
+                        name="name_ka"
+                        type="text"
+                        label="quote_form.name_ka"
+                        hint="quote"
+                        placeholder="{{ __('quote_form.name_ka_placeholder') }}"
+                    />
+                    <x-form.input
+                        class="text-white"
+                        name="movie_picture"
+                        type="file"
+                        label="quote_form.picture"
+                        hint="quote"
+                    />
                     <x-form.movie-dropdown :movies="$movies" hint="create_form" />
 
                     <x-form.button>{{ __('quote_form.button') }}</x-form.button>

@@ -11,15 +11,17 @@
             <x-form.input
                 name="name_en"
                 type="text"
-                label="movie_form.movie_name_en"
+                label="movie_form.name_en"
                 hint="movie"
+                placeholder="{{ __('movie_form.name_en_placeholder') }}"
                 :value="old('name_en', $movie->getTranslation('name', 'en'))"
             />
             <x-form.input
                 name="name_ka"
                 type="text"
                 hint="movie"
-                label="movie_form.movie_name_ka"
+                label="movie_form.name_ka"
+                placeholder="{{ __('movie_form.name_ka_placeholder') }}"
                 :value="old('name_ka', $movie->getTranslation('name', 'ka'))"
             />
             <x-form.input
@@ -27,6 +29,7 @@
                 type="text"
                 hint="movie"
                 label="movie_form.slug"
+                placeholder="{{ __('movie_form.slug_placeholder') }}"
                 :value="old('slug', $movie->slug)"
             />
 

@@ -12,15 +12,17 @@
                 <x-form.input
                     name="name_en"
                     type="text"
-                    label="quote_form.quote_name_en"
+                    label="quote_form.name_en"
                     hint="quote"
+                    placeholder="{{ __('quote_form.name_en_placeholder') }}"
                     :value="old('name_en', $quote->getTranslation('name', 'en'))"
                 />
                 <x-form.input
                     name="name_ka"
                     type="text"
-                    label="quote_form.quote_name_ka"
+                    label="quote_form.name_ka"
                     hint="quote"
+                    placeholder="{{ __('quote_form.name_ka_placeholder') }}"
                     :value="old('name_ka', $quote->getTranslation('name', 'ka'))"
                 />
                 <div class="mb-2">
