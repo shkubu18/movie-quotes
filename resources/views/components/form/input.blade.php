@@ -1,4 +1,4 @@
-@props(['name', 'label'])
+@props(['name', 'label', 'hint'])
 
 <x-form.field>
     <x-form.label name="{{ $name }}" title="{{ $label }}" />
@@ -10,5 +10,7 @@
         value="{{ old($name) }}"
         {{ $attributes }}
     />
+
+    <x-form.error name="{{ $name }}" error="validation.{{ $hint }}_{{ $name }}" />
 </x-form.field>
 

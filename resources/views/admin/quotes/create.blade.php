@@ -6,10 +6,10 @@
                 <form class="w-1/4" action="/admin/quotes" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <x-form.input name="name_en" type="text" label="quote_form.quote_name_en" />
-                    <x-form.input name="name_ka" type="text" label="quote_form.quote_name_ka" />
-                    <x-form.input class="text-white" name="movie_picture" type="file" label="quote_form.film" />
-                    <x-form.movie-dropdown :movies="$movies" hint="create_form"/>
+                    <x-form.input name="name_en" type="text" label="quote_form.quote_name_en" hint="quote" />
+                    <x-form.input name="name_ka" type="text" label="quote_form.quote_name_ka" hint="quote" />
+                    <x-form.input class="text-white" name="movie_picture" type="file" label="quote_form.film" hint="quote" />
+                    <x-form.movie-dropdown :movies="$movies" hint="create_form" />
 
                     <x-form.button>{{ __('quote_form.button') }}</x-form.button>
                 </form>

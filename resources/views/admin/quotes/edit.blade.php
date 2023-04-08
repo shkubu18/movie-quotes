@@ -11,12 +11,14 @@
                         name="name_en"
                         type="text"
                         label="quote_form.quote_name_en"
+                        hint="quote"
                         :value="old('name_en', $quote->getTranslation('name', 'en'))"
                     />
                     <x-form.input
                         name="name_ka"
                         type="text"
                         label="quote_form.quote_name_ka"
+                        hint="quote"
                         :value="old('name_ka', $quote->getTranslation('name', 'ka'))"
                     />
                     <div class="mb-2">
@@ -25,6 +27,7 @@
                             name="movie_picture"
                             type="file"
                             label="quote_form.film"
+                            hint="quote"
                             :value="old('movie_picture', $quote->movie_picture)"
                         />
                         <img
