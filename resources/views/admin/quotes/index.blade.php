@@ -9,7 +9,7 @@
 
             @foreach($quotes as $quote)
                 <x-dashboard.item :loop="$loop">
-                    <h2 class="mr-5 font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
+                    <h2 class="mr-5 max-w-[300px] truncate font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
                     <div class="flex items-center">
                         <img
                             class="mr-5 rounded h-[60px] w-[90px]"
