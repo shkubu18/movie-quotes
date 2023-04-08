@@ -22,7 +22,7 @@ class MovieController extends Controller
 	{
 		$this->saveMovie($movie, $request->validated());
 
-		return redirect()->route('home');
+		return redirect()->route('quotes.index');
 	}
 
 	public function edit(Movie $movie): View

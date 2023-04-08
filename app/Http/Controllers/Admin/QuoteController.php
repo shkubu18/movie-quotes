@@ -30,7 +30,7 @@ class QuoteController extends Controller
 	{
 		$this->saveQuote($quote, $request->validated());
 
-		return redirect()->route('home');
+		return redirect()->route('quotes.index');
 	}
 
 	public function edit(Quote $quote): View
