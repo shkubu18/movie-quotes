@@ -36,7 +36,7 @@ class MovieController extends Controller
 	{
 		$this->saveMovie($movie, $request->validated());
 
-		return redirect()->route('movies.index');
+		return redirect()->route('admin.movies.index');
 	}
 
 	private function saveMovie(Movie $movie, array $validated): void
