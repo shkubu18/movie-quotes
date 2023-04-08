@@ -1,5 +1,5 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
+    <x-move-back path="/" />
 
     <div class="min-h-screen flex justify-center">
         <div class="w-2/5">

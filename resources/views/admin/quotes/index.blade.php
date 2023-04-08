@@ -1,10 +1,14 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
+    <x-move-back path="/" />
 
     <x-dashboard.container>
-        <h1 class="text-3xl text-indigo-600 mb-10">{{ __('dashboard.quotes_dashboard') }}</h1>
+        <x-dashboard.title>{{ __('dashboard.quotes_dashboard') }}</x-dashboard.title>
+
+        @if($quotes->count())
+            <x-dashboard.quantity>{{ __('hint.quotes_qty') . ": " . $quotes->count()  }}</x-dashboard.quantity>
+
             @foreach($quotes as $quote)
-            <x-dashboard.item :loop="$loop">
+                <x-dashboard.item :loop="$loop">
                     <h2 class="mr-5 font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
                     <div class="flex items-center">
                         <img
@@ -25,7 +29,11 @@
                             <button class="text-gray-400">{{ __('dashboard.delete') }}</button>
                         </form>
                     </div>
-            </x-dashboard.item>
+                </x-dashboard.item>
             @endforeach
+
+            @else
+                <p class="text-center text-gray-500">{{ __('hint.quotes_dont_exists') }}</p>
+        @endif
     </x-dashboard.container>
 </x-layout>

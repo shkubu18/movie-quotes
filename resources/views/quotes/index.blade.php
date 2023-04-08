@@ -14,6 +14,8 @@
             >
                 {{ $quote->movie->getTranslation('name', app()->getLocale()) }}
             </a>
+            @else
+                <p class="text-center text-amber-200 mt-5">{{ __('hint.quotes_dont_exists') }}</p>
         @endif
     </x-container>
 </x-layout>

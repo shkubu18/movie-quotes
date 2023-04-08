@@ -1,5 +1,5 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/admin/movies/dashboard">{{ __('hint.back') }}</a>
+    <x-move-back path="/admin/movies/dashboard" />
 
     <x-container>
         <h1 class="mb-10 text-3xl text-center">{{ __('movie_form.edit_heading') }}</h1>

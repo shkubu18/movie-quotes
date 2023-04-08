@@ -1,5 +1,6 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/admin/quotes/dashboard">{{ __('hint.back') }}</a>
+    <x-move-back path="/admin/quotes/dashboard" />
+
     @if($movies->count())
         <x-container>
                 <h1 class="mb-10 text-3xl text-center">{{ __('quote_form.edit_heading') }}</h1>

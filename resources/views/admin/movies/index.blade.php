@@ -1,8 +1,12 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
+    <x-move-back path="/" />
 
     <x-dashboard.container>
-            <h1 class="text-3xl text-indigo-600 mb-10 text-center">{{ __('dashboard.movies_dashboard') }}</h1>
+        <x-dashboard.title>{{ __('dashboard.movies_dashboard') }}</x-dashboard.title>
+
+        @if($movies->count())
+            <x-dashboard.quantity>{{ __('hint.movies_qty') . ": " . $movies->count()  }}</x-dashboard.quantity>
+
             @foreach($movies as $movie)
                 <x-dashboard.item :loop="$loop">
                     <a
@@ -22,5 +26,9 @@
                     </div>
                 </x-dashboard.item>
             @endforeach
+
+            @else
+                <p class="text-center text-gray-500">{{ __('hint.movies_dont_exists') }}</p>
+        @endif
     </x-dashboard.container>
 </x-layout>

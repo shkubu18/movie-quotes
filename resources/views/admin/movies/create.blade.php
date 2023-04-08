@@ -1,5 +1,6 @@
 <x-layout>
-    <a class="absolute m-5 underline text-lg" href="/">{{ __('hint.back') }}</a>
+    <x-move-back path="/" />
+
     <x-container>
             <h1 class="mb-10 text-3xl text-center">{{ __('movie_form.heading') }}</h1>
             <form class="w-1/4" action="/admin/movies" method="POST">
