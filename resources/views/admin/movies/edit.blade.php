@@ -3,6 +3,7 @@
 
     <x-container>
         <h1 class="mb-10 text-3xl text-center">{{ __('movie_form.edit_heading') }}</h1>
+
         <form class="w-1/4" action="/admin/movies/{{ $movie->id }}" method="POST">
             @csrf
             @method('PATCH')
