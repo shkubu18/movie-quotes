@@ -9,4 +9,6 @@ return [
 	'button'                  => 'Create new quote',
 	'edit_heading'            => 'Edit quote',
 	'update_btn'              => 'Update',
+	'movies_dont_exists'      => "Unfortunately, movies don't exist at this point.
+	You must add at least one movie to create a quote.",
 ];
