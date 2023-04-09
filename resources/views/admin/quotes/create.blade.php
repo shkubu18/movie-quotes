@@ -1,77 +1,42 @@
 <x-layout>
+    <x-move-back path="/" />
+
     @if($movies->count())
-        <div class="min-h-screen flex items-center justify-center flex-col">
-            <h1 class="mb-10 text-3xl">{{ __('quote_form.heading') }}</h1>
-            <form class="w-1/5" action="/admin/quotes" method="POST" enctype="multipart/form-data">
-                @csrf
+        <x-container>
+                <h1 class="mb-10 text-3xl text-center">{{ __('quote_form.heading') }}</h1>
+                <form class="w-1/4" action="/admin/quotes" method="POST" enctype="multipart/form-data">
+                    @csrf
 
-                <div class="flex flex-col">
-                    <label class="text-lg" for="name_en">{{ __('quote_form.quote_name_en') }}</label>
-                    <input
-                        class="border border-gray-200 p-2 rounded"
-                        type="text"
+                    <x-form.input
                         name="name_en"
-                        id="name_en"
-                        value="{{ old('name_en') }}"
-                        required
-                    />
-                </div>
-                <div class="flex flex-col">
-                    <label class="text-lg" for="name_ka">{{ __('quote_form.quote_name_ka') }}</label>
-                    <input
-                        class="border border-gray-200 p-2 rounded"
                         type="text"
+                        label="quote_form.name_en"
+                        hint="quote"
+                        placeholder="{{ __('quote_form.name_en_placeholder') }}"
+                    />
+                    <x-form.input
                         name="name_ka"
-                        id="name_ka"
-                        value="{{ old('name_ka') }}"
-                        required
+                        type="text"
+                        label="quote_form.name_ka"
+                        hint="quote"
+                        placeholder="{{ __('quote_form.name_ka_placeholder') }}"
                     />
-                </div>
-                <div class="flex flex-col mt-3">
-                    <label class="text-lg" for="movie_picture">{{ __('quote_form.film') }}</label>
-                    <input
-                        class="border border-gray-200 p-2 rounded"
-                        type="file"
+                    <x-form.input
+                        class="text-white"
                         name="movie_picture"
-                        id="movie_picture"
-                        required
+                        type="file"
+                        label="quote_form.picture"
+                        hint="quote"
                     />
+                    <x-form.movie-dropdown :movies="$movies" hint="create_form" />
 
-                </div>
-
-                <div class="flex flex-col mt-3">
-                    <label class="text-lg" for="movie">{{ __('quote_form.select_movie') }}</label>
-                    <select
-                        class="p-1.5 rounded-md bg-gray-100"
-                        name="movie_id"
-                        id="movie"
-                    >
-                        @foreach($movies as $movie)
-                            <option
-                                value="{{ $movie->id }}"
-                                {{ old('movie_id') === $movie->id ? 'selected' : '' }}
-                            >
-                                {{ ucwords($movie->getTranslation('name', app()->getLocale())) }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <button
-                    class="bg-sky-500 p-2 rounded text-white mt-8 w-full"
-                    type="submit"
-                >{{ __('quote_form.button') }}
-                </button>
-            </form>
-        </div>
+                    <x-form.button>{{ __('quote_form.button') }}</x-form.button>
+                </form>
+        </x-container>
         @else
         <div class="flex items-center flex-col">
-            <p
-                class="mt-10"
-            >
-                Unfortunately, movies don't exist at this point.
-                You must add at least one movie to create a quote.
-            </p>
-            <a class="underline mt-5" href="/admin/movies/create">Add new movie</a>
+            <p class="mt-16 text-amber-200">{{ __('quote_form.movies_dont_exists') }}</p>
+            <a class="mt-10" href="/admin/movies/create">{{ __('header.add_movie') }}</a>
         </div>
     @endif
 </x-layout>

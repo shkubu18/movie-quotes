@@ -19,14 +19,14 @@ use App\Http\Controllers\LangController;
 |
 */
 
-Route::get('/', [QuoteController::class, 'index'])->name('home');
+Route::get('/', [QuoteController::class, 'index'])->name('quotes.index');
 
 Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('admin.movies.show');
 
 Route::middleware('guest')->group(function () {
-	Route::view('login', 'login')->name('login.page');
+	Route::view('login', 'auth.login')->name('auth.login.page');
 	Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
@@ -35,31 +35,31 @@ Route::middleware('auth')->group(function () {
 
 	Route::controller(AdminMovieController::class)->group(function () {
 		Route::view('/admin/movies/create', 'admin.movies.create')
-			->name('movies.create');
+			->name('admin.movies.create');
 		Route::post('/admin/movies', 'store')
-			->name('movies.store');
+			->name('admin.movies.store');
 		Route::get('/admin/movies/dashboard', 'index')
-			->name('movies.index');
+			->name('admin.movies.index');
 		Route::get('/admin/movies/{movie}/edit', 'edit')
-			->name('movies.edit');
+			->name('admin.movies.edit');
 		Route::patch('/admin/movies/{movie}', 'update')
-			->name('movies.update');
+			->name('admin.movies.update');
 		Route::delete('/admin/movies/{movie}', 'destroy')
-			->name('movies.destroy');
+			->name('admin.movies.destroy');
 	});
 
 	Route::controller(AdminQuoteController::class)->group(function () {
 		Route::get('/admin/quotes/create', 'create')
-		->name('quotes.create');
+		->name('admin.quotes.create');
 		Route::post('/admin/quotes', 'store')
-			->name('quotes.store');
+			->name('admin.quotes.store');
 		Route::get('/admin/quotes/dashboard', 'index')
-			->name('quotes.index');
+			->name('admin.quotes.index');
 		Route::get('/admin/quotes/{quote}/edit', 'edit')
-			->name('quotes.edit');
+			->name('admin.quotes.edit');
 		Route::patch('/admin/quotes/{quote}', 'update')
-			->name('quotes.update');
+			->name('admin.quotes.update');
 		Route::delete('/admin/quotes/{quote}', 'destroy')
-			->name('quotes.destroy');
+			->name('admin.quotes.destroy');
 	});
 });

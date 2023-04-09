@@ -13,19 +13,19 @@ class AuthController extends Controller
 		if (!auth()->attempt($request->validated()))
 		{
 			throw ValidationException::withMessages([
-				'warning' => 'Incorrect email or password.',
+				'auth_fail' => 'Incorrect email or password.',
 			]);
 		}
 
 		session()->regenerate();
 
-		return redirect()->route('home');
+		return redirect()->route('quotes.index');
 	}
 
 	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 
-		return redirect()->route('home');
+		return redirect()->route('quotes.index');
 	}
 }

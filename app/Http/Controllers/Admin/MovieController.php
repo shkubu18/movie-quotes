@@ -13,7 +13,7 @@ class MovieController extends Controller
 {
 	public function index(): View
 	{
-		return view('admin.movies.dashboard', [
+		return view('admin.movies.index', [
 			'movies' => Movie::all(),
 		]);
 	}
@@ -22,7 +22,7 @@ class MovieController extends Controller
 	{
 		$this->saveMovie($movie, $request->validated());
 
-		return redirect()->route('home');
+		return redirect()->route('quotes.index');
 	}
 
 	public function edit(Movie $movie): View
@@ -36,7 +36,7 @@ class MovieController extends Controller
 	{
 		$this->saveMovie($movie, $request->validated());
 
-		return redirect()->route('movies.index');
+		return redirect()->route('admin.movies.index');
 	}
 
 	private function saveMovie(Movie $movie, array $validated): void
