@@ -1,7 +1,18 @@
 # Movie Quotes
-#### Author: Data Shkubuliani
+#### Author: [Davit Shkubuliani](https://www.linkedin.com/in/davit-shkubuliani/)
 
 ---
+
+Movie Quotes application is a web application where you can see quotes randomly on every page refresh.
+All quotes are related to a certain movie. When you are on the home page and click on a movie title, 
+you will be redirected to a page where you can see all the quotes related to that particular movie.
+
+The application also has an admin panel where you can create, read, update and delete movies and quotes. 
+Also app does not have a registration page. Admin must be created with the artisan command, which can be found in the configuration section.
+After you create a user, you can authenticate from the login page and use admin privileges.
+
+The application supports two languages, Georgian and English.
+
 #
 ## Table of Contents
 
@@ -23,8 +34,10 @@
 
 
 #
+
 ## Tech Stack
 - <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 5px" />&nbsp;[Laravel@8.x](https://laravel.com/docs/8.x) - back-end framework
+- <img src="readme/assets/tailwind.png" height="18" style="position: relative; top: 5px" />&nbsp;[TailwindCSS](https://tailwindcss.com/) - css framework for styles
 - <img src="readme/assets/spatie.png" height="19" style="position: relative; top: 4px" />&nbsp;[Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
 
 
@@ -49,7 +62,6 @@
     ```sh
     npm run dev
     ```
-    in order to build your JS/SaaS resources.
 
 
 4. Now we need to set our env file. Go to the root of your project and execute this command.
@@ -91,20 +103,20 @@
 You need to start both Laravel and Vite servers:
 
 ```shell
-    php artisan serve
+php artisan serve
 ```
  
 ```shell
-    npm run dev
+npm run dev
 ```
 
 
 #
-## Database Design Diagram
+## Database Structure
+[*drawSQL link*](https://drawsql.app/teams/datas-team/diagrams/movie-quotes)
 
 ![](readme/assets/drawSQL-movie-quotes.png)
 
-*drawSQL link:* https://drawsql.app/teams/datas-team/diagrams/movie-quotes
 
 #
 ## Live Deployment
