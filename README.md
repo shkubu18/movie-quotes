@@ -14,7 +14,6 @@
 
 
 #
-#
 ## Prerequisites
 
 * <img src="readme/assets/php.svg" width="35" style="position: relative; top: 5px" />&nbsp;&nbsp;*PHP@8.2 and up*
@@ -24,13 +23,11 @@
 
 
 #
-#
 ## Tech Stack
 - <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 5px" />&nbsp;[Laravel@8.x](https://laravel.com/docs/8.x) - back-end framework
 - <img src="readme/assets/spatie.png" height="19" style="position: relative; top: 4px" />&nbsp;[Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
 
 
-#
 #
 ## Getting Started
 1. First of all you need to clone repository from github:
@@ -62,7 +59,6 @@
 
 
 #
-#
 ## Configuration
 
 1. Modify the database configuration in your `.env` file. DB_PASSWORD is empty by default.
@@ -90,7 +86,6 @@
 
 
 #
-#
 ## Development
 
 You need to start both Laravel and Vite servers:
@@ -105,15 +100,12 @@ You need to start both Laravel and Vite servers:
 
 
 #
-#
 ## Database Design Diagram
 
 ![](readme/assets/drawSQL-movie-quotes.png)
 
 *drawSQL link:* https://drawsql.app/teams/datas-team/diagrams/movie-quotes
 
-
-#
 #
 ## Live Deployment
 
