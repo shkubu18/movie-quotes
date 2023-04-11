@@ -23,7 +23,7 @@
                     />
                     <x-form.input
                         class="text-white"
-                        name="movie_picture"
+                        name="picture"
                         type="file"
                         label="quote_form.picture"
                         hint="quote"

@@ -28,16 +28,16 @@
                 <div class="mb-2">
                     <x-form.input
                         class="text-white"
-                        name="movie_picture"
+                        name="picture"
                         type="file"
                         label="quote_form.film"
                         hint="quote"
-                        :value="old('movie_picture', $quote->movie_picture)"
+                        :value="old('picture', $quote->picture)"
                     />
                     <img
                         width="90"
                         class="rounded"
-                        src="{{ asset('storage/' . $quote->movie_picture) }}"
+                        src="{{ asset('storage/' . $quote->picture) }}"
                         alt="movie picture"
                     >
                 </div>

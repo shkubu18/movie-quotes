@@ -4,7 +4,7 @@
         @if($quote)
             <img
                 class="rounded-lg my-7 object-cover w-[500px] h-[300px]"
-                src="{{ asset('storage/' . $quote->movie_picture) }}"
+                src="{{ asset('storage/' . $quote->picture) }}"
                 alt="movie picture"
             />
             <h1 class="text-3xl mx-5 text-center">

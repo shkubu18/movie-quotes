@@ -13,7 +13,7 @@
                     <div class="flex items-center">
                         <img
                             class="mr-5 rounded h-[60px] w-[90px]"
-                            src="{{ asset('storage/' . $quote->movie_picture) }}"
+                            src="{{ asset('storage/' . $quote->picture) }}"
                             alt="movie picture"
                         />
                         <a class="mr-5 text-indigo-600" href="/quotes/{{ $quote->id }}/edit">

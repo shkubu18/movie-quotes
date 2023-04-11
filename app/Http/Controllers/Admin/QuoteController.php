@@ -52,9 +52,9 @@ class QuoteController extends Controller
 	{
 		$quote->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
 
-		if ($validated['movie_picture'] ?? false)
+		if ($validated['picture'] ?? false)
 		{
-			$quote->movie_picture = request()->file('movie_picture')->store('pictures');
+			$quote->picture = request()->file('picture')->store('pictures');
 		}
 
 		$quote->movie_id = $validated['movie_id'];
