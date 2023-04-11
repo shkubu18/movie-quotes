@@ -25,39 +25,27 @@ Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('la
 
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movies.show');
 
-Route::view('login', 'auth.login')->name('auth.login.page');
+Route::view('login', 'auth.login')->name('login.page');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
 	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 	Route::controller(AdminMovieController::class)->group(function () {
-		Route::view('/movies/create', 'admin.movies.create')
-			->name('movies.create');
-		Route::post('/movies', 'store')
-			->name('movies.store');
-		Route::get('/movies/dashboard', 'index')
-			->name('movies.index');
-		Route::get('/movies/{movie}/edit', 'edit')
-			->name('movies.edit');
-		Route::patch('/movies/{movie}', 'update')
-			->name('movies.update');
-		Route::delete('/movies/{movie}', 'destroy')
-			->name('movies.destroy');
+		Route::view('/movies/create', 'admin.movies.create')->name('movies.create');
+		Route::post('/movies', 'store')->name('movies.store');
+		Route::get('/movies/dashboard', 'index')->name('movies.index');
+		Route::get('/movies/{movie}/edit', 'edit')->name('movies.edit');
+		Route::patch('/movies/{movie}', 'update')->name('movies.update');
+		Route::delete('/movies/{movie}', 'destroy')->name('movies.destroy');
 	});
 
 	Route::controller(AdminQuoteController::class)->group(function () {
-		Route::get('/quotes/create', 'create')
-		->name('quotes.create');
-		Route::post('/quotes', 'store')
-			->name('quotes.store');
-		Route::get('/quotes/dashboard', 'index')
-			->name('quotes.index');
-		Route::get('/quotes/{quote}/edit', 'edit')
-			->name('quotes.edit');
-		Route::patch('/quotes/{quote}', 'update')
-			->name('quotes.update');
-		Route::delete('/quotes/{quote}', 'destroy')
-			->name('quotes.destroy');
+		Route::get('/quotes/create', 'create')->name('quotes.create');
+		Route::post('/quotes', 'store')->name('quotes.store');
+		Route::get('/quotes/dashboard', 'index')->name('quotes.index');
+		Route::get('/quotes/{quote}/edit', 'edit')->name('quotes.edit');
+		Route::patch('/quotes/{quote}', 'update')->name('quotes.update');
+		Route::delete('/quotes/{quote}', 'destroy')->name('quotes.destroy');
 	});
 });
