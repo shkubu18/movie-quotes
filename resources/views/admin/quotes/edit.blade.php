@@ -1,11 +1,11 @@
 <x-layout>
-    <x-move-back path="/admin/quotes/dashboard" />
+    <x-move-back path="/quotes/dashboard" />
 
     @if($movies->count())
         <x-container>
             <h1 class="mb-10 text-3xl text-center">{{ __('quote_form.edit_heading') }}</h1>
 
-            <form class="w-1/4" action="/admin/quotes/{{ $quote->id }}" method="POST" enctype="multipart/form-data">
+            <form class="w-1/4" action="/quotes/{{ $quote->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -52,7 +52,7 @@
                 Unfortunately, movies don't exist at this point.
                 You must add at least one movie to create a quote.
             </p>
-            <a class="underline mt-5" href="/admin/movies/create">Add new movie</a>
+            <a class="underline mt-5" href="/movies/create">Add new movie</a>
         </div>
     @endif
 </x-layout>

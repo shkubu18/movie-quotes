@@ -16,10 +16,10 @@
                             src="{{ asset('storage/' . $quote->movie_picture) }}"
                             alt="movie picture"
                         />
-                        <a class="mr-5 text-indigo-600" href="/admin/quotes/{{ $quote->id }}/edit">
+                        <a class="mr-5 text-indigo-600" href="/quotes/{{ $quote->id }}/edit">
                             {{ __('dashboard.edit') }}
                         </a>
-                        <form action="/admin/quotes/{{ $quote->id }}" method="POST">
+                        <form action="/quotes/{{ $quote->id }}" method="POST">
                             @csrf
                             @method('DELETE')
 

@@ -1,10 +1,10 @@
 <x-layout>
-    <x-move-back path="/admin/movies/dashboard" />
+    <x-move-back path="/movies/dashboard" />
 
     <x-container>
         <h1 class="mb-10 text-3xl text-center">{{ __('movie_form.edit_heading') }}</h1>
 
-        <form class="w-1/4" action="/admin/movies/{{ $movie->id }}" method="POST">
+        <form class="w-1/4" action="/movies/{{ $movie->id }}" method="POST">
             @csrf
             @method('PATCH')
 
