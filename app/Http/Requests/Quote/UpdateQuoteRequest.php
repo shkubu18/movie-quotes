@@ -18,4 +18,17 @@ class UpdateQuoteRequest extends FormRequest
 			'movie_id'      => ['required', Rule::exists('movies', 'id')],
 		];
 	}
+
+	public function validated($key = null, $default = null): array
+	{
+		$validated = parent::validated();
+
+		return [
+			'name' => [
+				'en' => $validated['name_en'],
+				'ka' => $validated['name_ka'],
+			],
+			'movie_id' => $validated['movie_id'],
+		];
+	}
 }

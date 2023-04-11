@@ -17,4 +17,17 @@ class UpdateMovieRequest extends FormRequest
 			'slug'    => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
 		];
 	}
+
+	public function validated($key = null, $default = null): array
+	{
+		$validated = parent::validated();
+
+		return [
+			'name' => [
+				'en' => $validated['name_en'],
+				'ka' => $validated['name_ka'],
+			],
+			'slug' => $validated['slug'],
+		];
+	}
 }
