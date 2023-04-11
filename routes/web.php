@@ -19,47 +19,45 @@ use App\Http\Controllers\LangController;
 |
 */
 
-Route::get('/', [QuoteController::class, 'index'])->name('quotes.index');
+Route::get('/', [QuoteController::class, 'index'])->name('quotes.show');
 
 Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'show'])->name('admin.movies.show');
+Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movies.show');
 
-Route::middleware('guest')->group(function () {
-	Route::view('login', 'auth.login')->name('auth.login.page');
-	Route::post('login', [AuthController::class, 'login'])->name('login');
-});
+Route::view('login', 'auth.login')->name('auth.login.page');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
 	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 	Route::controller(AdminMovieController::class)->group(function () {
-		Route::view('/admin/movies/create', 'admin.movies.create')
-			->name('admin.movies.create');
-		Route::post('/admin/movies', 'store')
-			->name('admin.movies.store');
-		Route::get('/admin/movies/dashboard', 'index')
-			->name('admin.movies.index');
-		Route::get('/admin/movies/{movie}/edit', 'edit')
-			->name('admin.movies.edit');
-		Route::patch('/admin/movies/{movie}', 'update')
-			->name('admin.movies.update');
-		Route::delete('/admin/movies/{movie}', 'destroy')
-			->name('admin.movies.destroy');
+		Route::view('/movies/create', 'admin.movies.create')
+			->name('movies.create');
+		Route::post('/movies', 'store')
+			->name('movies.store');
+		Route::get('/movies/dashboard', 'index')
+			->name('movies.index');
+		Route::get('/movies/{movie}/edit', 'edit')
+			->name('movies.edit');
+		Route::patch('/movies/{movie}', 'update')
+			->name('movies.update');
+		Route::delete('/movies/{movie}', 'destroy')
+			->name('movies.destroy');
 	});
 
 	Route::controller(AdminQuoteController::class)->group(function () {
-		Route::get('/admin/quotes/create', 'create')
-		->name('admin.quotes.create');
-		Route::post('/admin/quotes', 'store')
-			->name('admin.quotes.store');
-		Route::get('/admin/quotes/dashboard', 'index')
-			->name('admin.quotes.index');
-		Route::get('/admin/quotes/{quote}/edit', 'edit')
-			->name('admin.quotes.edit');
-		Route::patch('/admin/quotes/{quote}', 'update')
-			->name('admin.quotes.update');
-		Route::delete('/admin/quotes/{quote}', 'destroy')
-			->name('admin.quotes.destroy');
+		Route::get('/quotes/create', 'create')
+		->name('quotes.create');
+		Route::post('/quotes', 'store')
+			->name('quotes.store');
+		Route::get('/quotes/dashboard', 'index')
+			->name('quotes.index');
+		Route::get('/quotes/{quote}/edit', 'edit')
+			->name('quotes.edit');
+		Route::patch('/quotes/{quote}', 'update')
+			->name('quotes.update');
+		Route::delete('/quotes/{quote}', 'destroy')
+			->name('quotes.destroy');
 	});
 });
