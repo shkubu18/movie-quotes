@@ -26,9 +26,13 @@ class QuoteController extends Controller
 		]);
 	}
 
-	public function store(StoreQuoteRequest $request, Quote $quote): RedirectResponse
+	public function store(StoreQuoteRequest $request): RedirectResponse
 	{
-		$this->saveQuote($quote, $request->validated());
+		Quote::create([
+			'name'     => ['en' => $request->name_en, 'ka' => $request->name_ka],
+			'movie_id' => $request->movie_id,
+			'picture'  => request()->file('picture')->store('pictures'),
+		]);
 
 		return redirect()->route('quotes.show');
 	}
@@ -43,23 +47,13 @@ class QuoteController extends Controller
 
 	public function update(UpdateQuoteRequest $request, Quote $quote): RedirectResponse
 	{
-		$this->saveQuote($quote, $request->validated());
+		$quote->update([
+			'name'     => ['en' => $request->name_en, 'ka' => $request->name_ka],
+			'movie_id' => $request->movie_id,
+			'picture'  => $request->hasFile('picture') ? request()->file('picture')->store('pictures') : $quote->picture,
+		]);
 
 		return redirect()->route('quotes.index');
-	}
-
-	private function saveQuote(Quote $quote, array $validated): void
-	{
-		$quote->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
-
-		if ($validated['picture'] ?? false)
-		{
-			$quote->picture = request()->file('picture')->store('pictures');
-		}
-
-		$quote->movie_id = $validated['movie_id'];
-
-		$quote->save();
 	}
 
 	public function destroy(Quote $quote): RedirectResponse
