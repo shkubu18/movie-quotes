@@ -1,7 +1,7 @@
 <x-layout>
     <x-container>
         <h1 class="mb-10 text-3xl text-center">{{ __('auth.sign_in') }}</h1>
-        <form class="w-1/4" action="/login" method="POST">
+        <form class="w-1/4" action="{{ route('login') }}" method="POST">
             @csrf
 
             <x-form.input
