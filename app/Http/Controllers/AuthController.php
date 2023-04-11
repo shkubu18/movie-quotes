@@ -19,13 +19,13 @@ class AuthController extends Controller
 
 		session()->regenerate();
 
-		return redirect()->route('quotes.index');
+		return redirect()->route('quotes.show');
 	}
 
 	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 
-		return redirect()->route('quotes.index');
+		return redirect()->route('quotes.show');
 	}
 }
