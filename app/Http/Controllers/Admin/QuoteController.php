@@ -28,11 +28,7 @@ class QuoteController extends Controller
 
 	public function store(StoreQuoteRequest $request): RedirectResponse
 	{
-		Quote::create([
-			'name'     => ['en' => $request->name_en, 'ka' => $request->name_ka],
-			'movie_id' => $request->movie_id,
-			'picture'  => request()->file('picture')->store('pictures'),
-		]);
+		Quote::create($request->validated());
 
 		return redirect()->route('quotes.show');
 	}
@@ -47,9 +43,7 @@ class QuoteController extends Controller
 
 	public function update(UpdateQuoteRequest $request, Quote $quote): RedirectResponse
 	{
-		$quote->update([
-			'name'     => ['en' => $request->name_en, 'ka' => $request->name_ka],
-			'movie_id' => $request->movie_id,
+		$quote->update([...$request->validated(),
 			'picture'  => $request->hasFile('picture') ? request()->file('picture')->store('pictures') : $quote->picture,
 		]);
 
