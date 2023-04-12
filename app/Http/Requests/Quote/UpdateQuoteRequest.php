@@ -14,16 +14,16 @@ class UpdateQuoteRequest extends FormRequest
 		return [
 			'name_en'       => 'required|string',
 			'name_ka'       => 'required|string',
+			'name'          => 'array',
 			'picture'       => $quote->exists ? ['image'] : ['required', 'image'],
 			'movie_id'      => ['required', Rule::exists('movies', 'id')],
 		];
 	}
 
-	public function validated($key = null, $default = null): array
+	protected function prepareForValidation()
 	{
-		return [
+		$this->merge([
 			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
-			'movie_id' => $this->movie_id,
-		];
+		]);
 	}
 }

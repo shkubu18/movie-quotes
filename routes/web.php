@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\MovieController as AdminMovieController;
-use App\Http\Controllers\Admin\QuoteController as AdminQuoteController;
 use App\Http\Controllers\LangController;
 
 /*
@@ -19,7 +17,7 @@ use App\Http\Controllers\LangController;
 |
 */
 
-Route::get('/', [QuoteController::class, 'index'])->name('quotes.show');
+Route::get('/', [QuoteController::class, 'randomQuote'])->name('quotes.show');
 
 Route::get('/language/{lang}', [LangController::class, 'setLanguage'])->name('language.set');
 
@@ -31,7 +29,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth')->group(function () {
 	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-	Route::controller(AdminMovieController::class)->group(function () {
+	Route::controller(MovieController::class)->group(function () {
 		Route::view('/movies/create', 'admin.movies.create')->name('movies.create');
 		Route::post('/movies', 'store')->name('movies.store');
 		Route::get('/movies/dashboard', 'index')->name('movies.index');
@@ -40,7 +38,7 @@ Route::middleware('auth')->group(function () {
 		Route::delete('/movies/{movie}', 'destroy')->name('movies.destroy');
 	});
 
-	Route::controller(AdminQuoteController::class)->group(function () {
+	Route::controller(QuoteController::class)->group(function () {
 		Route::get('/quotes/create', 'create')->name('quotes.create');
 		Route::post('/quotes', 'store')->name('quotes.store');
 		Route::get('/quotes/dashboard', 'index')->name('quotes.index');
