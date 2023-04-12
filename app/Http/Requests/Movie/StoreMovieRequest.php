@@ -13,15 +13,15 @@ class StoreMovieRequest extends FormRequest
 		return [
 			'name_en' => 'required|string',
 			'name_ka' => 'required|string',
+			'name'    => 'array',
 			'slug'    => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
 		];
 	}
 
-	public function validated($key = null, $default = null): array
+	protected function prepareForValidation()
 	{
-		return [
+		$this->merge([
 			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
-			'slug'     => $this->slug,
-		];
+		]);
 	}
 }
