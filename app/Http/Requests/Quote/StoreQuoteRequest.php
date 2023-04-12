@@ -19,15 +19,10 @@ class StoreQuoteRequest extends FormRequest
 
 	public function validated($key = null, $default = null): array
 	{
-		$validated = parent::validated();
-
 		return [
-			'name' => [
-				'en' => $validated['name_en'],
-				'ka' => $validated['name_ka'],
-			],
-			'movie_id' => $validated['movie_id'],
+			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
 			'picture'  => request()->file('picture')->store('pictures'),
+			'movie_id' => $this->movie_id,
 		];
 	}
 }

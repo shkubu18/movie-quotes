@@ -20,14 +20,9 @@ class UpdateMovieRequest extends FormRequest
 
 	public function validated($key = null, $default = null): array
 	{
-		$validated = parent::validated();
-
 		return [
-			'name' => [
-				'en' => $validated['name_en'],
-				'ka' => $validated['name_ka'],
-			],
-			'slug' => $validated['slug'],
+			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
+			'slug'     => $this->slug,
 		];
 	}
 }
