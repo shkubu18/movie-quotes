@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthAttemptRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-	public function login(AuthAttemptRequest $request): RedirectResponse
+	public function login(LoginRequest $request): RedirectResponse
 	{
 		if (!auth()->attempt($request->validated()))
 		{
@@ -19,13 +19,13 @@ class AuthController extends Controller
 
 		session()->regenerate();
 
-		return redirect()->route('quotes.index');
+		return redirect()->route('quotes.show');
 	}
 
 	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 
-		return redirect()->route('quotes.index');
+		return redirect()->route('quotes.show');
 	}
 }

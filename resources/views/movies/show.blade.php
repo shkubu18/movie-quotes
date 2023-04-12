@@ -8,7 +8,7 @@
                 <div class="bg-white text-black rounded-xl mb-7">
                     <img
                         class="rounded-t-xl"
-                        src="{{ asset('storage/' . $quote->movie_picture) }}"
+                        src="{{ asset('storage/' . $quote->picture) }}"
                         alt="movie picture"
                     />
                     <h1 class="p-5">{{ '"' . $quote->getTranslation('name', app()->getLocale()) . '"' }}</h1>

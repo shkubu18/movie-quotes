@@ -12,8 +12,17 @@ class StoreQuoteRequest extends FormRequest
 		return [
 			'name_en'       => 'required|string',
 			'name_ka'       => 'required|string',
-			'movie_picture' => 'required|image',
+			'picture'       => 'required|image',
 			'movie_id'      => ['required', Rule::exists('movies', 'id')],
+		];
+	}
+
+	public function validated($key = null, $default = null): array
+	{
+		return [
+			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
+			'picture'  => request()->file('picture')->store('pictures'),
+			'movie_id' => $this->movie_id,
 		];
 	}
 }

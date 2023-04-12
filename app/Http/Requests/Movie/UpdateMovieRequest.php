@@ -14,7 +14,15 @@ class UpdateMovieRequest extends FormRequest
 		return [
 			'name_en' => 'required|string',
 			'name_ka' => 'required|string',
+			'name'    => 'array',
 			'slug'    => ['required', Rule::unique('movies', 'slug')->ignore($movie)],
 		];
+	}
+
+	protected function prepareForValidation()
+	{
+		$this->merge([
+			'name'     => ['en' => $this->name_en, 'ka' => $this->name_ka],
+		]);
 	}
 }

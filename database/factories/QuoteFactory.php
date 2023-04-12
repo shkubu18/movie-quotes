@@ -32,7 +32,7 @@ class QuoteFactory extends Factory
 				'ka' => \Faker\Factory::create('ka_GE')->realText(20),
 			],
 			'movie_id'      => Movie::factory(),
-			'movie_picture' => 'pictures/' . basename($image),
+			'picture'       => 'pictures/' . basename($image),
 		];
 	}
 }

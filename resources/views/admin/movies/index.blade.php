@@ -9,14 +9,14 @@
 
             @foreach($movies as $movie)
                 <x-dashboard.item :loop="$loop">
-                    <a class="mr-5 font-medium m-2.5 max-w-[400px] truncate" href="/movies/{{ $movie->slug }}">
+                    <a class="mr-5 font-medium m-2.5 truncate" href="/movie/{{ $movie->slug }}">
                         {{ $movie->getTranslation('name', app()->getLocale()) }}
                     </a>
                     <div class="flex">
-                        <a class="mr-5 text-indigo-600" href="/admin/movies/{{ $movie->id }}/edit">
+                        <a class="mr-5 text-indigo-600" href="/movies/{{ $movie->id }}/edit">
                             {{ __('dashboard.edit') }}
                         </a>
-                        <form action="/admin/movies/{{ $movie->id }}" method="POST">
+                        <form action="/movies/{{ $movie->id }}" method="POST">
                             @csrf
                             @method('DELETE')
 

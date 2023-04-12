@@ -1,11 +1,11 @@
 <x-layout>
-    <x-move-back path="/admin/quotes/dashboard" />
+    <x-move-back path="/quotes/dashboard" />
 
     @if($movies->count())
         <x-container>
             <h1 class="mb-10 text-3xl text-center">{{ __('quote_form.edit_heading') }}</h1>
 
-            <form class="w-1/4" action="/admin/quotes/{{ $quote->id }}" method="POST" enctype="multipart/form-data">
+            <form class="w-1/4" action="/quotes/{{ $quote->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -28,16 +28,16 @@
                 <div class="mb-2">
                     <x-form.input
                         class="text-white"
-                        name="movie_picture"
+                        name="picture"
                         type="file"
                         label="quote_form.film"
                         hint="quote"
-                        :value="old('movie_picture', $quote->movie_picture)"
+                        :value="old('picture', $quote->picture)"
                     />
                     <img
                         width="90"
                         class="rounded"
-                        src="{{ asset('storage/' . $quote->movie_picture) }}"
+                        src="{{ asset('storage/' . $quote->picture) }}"
                         alt="movie picture"
                     >
                 </div>
@@ -48,11 +48,8 @@
         </x-container>
     @else
         <div class="flex items-center flex-col">
-            <p class="mt-10">
-                Unfortunately, movies don't exist at this point.
-                You must add at least one movie to create a quote.
-            </p>
-            <a class="underline mt-5" href="/admin/movies/create">Add new movie</a>
+            <p class="mt-16 text-amber-200">{{ __('quote_form.movies_dont_exists') }}</p>
+            <a class="mt-10" href="{{ route('movies.create') }}">{{ __('header.add_movie') }}</a>
         </div>
     @endif
 </x-layout>

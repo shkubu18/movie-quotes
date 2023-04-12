@@ -18,11 +18,11 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function store(StoreMovieRequest $request, Movie $movie): RedirectResponse
+	public function store(StoreMovieRequest $request): RedirectResponse
 	{
-		$this->saveMovie($movie, $request->validated());
+		Movie::create($request->validated());
 
-		return redirect()->route('quotes.index');
+		return redirect()->route('quotes.show');
 	}
 
 	public function edit(Movie $movie): View
@@ -34,17 +34,9 @@ class MovieController extends Controller
 
 	public function update(UpdateMovieRequest $request, Movie $movie): RedirectResponse
 	{
-		$this->saveMovie($movie, $request->validated());
+		$movie->update($request->validated());
 
-		return redirect()->route('admin.movies.index');
-	}
-
-	private function saveMovie(Movie $movie, array $validated): void
-	{
-		$movie->setTranslations('name', ['en' => $validated['name_en'], 'ka' => $validated['name_ka']]);
-		$movie->slug = $validated['slug'];
-
-		$movie->save();
+		return redirect()->route('movies.index');
 	}
 
 	public function destroy(Movie $movie): RedirectResponse

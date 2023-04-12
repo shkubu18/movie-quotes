@@ -9,5 +9,5 @@ return [
 	'movie_slug'               => 'Slug is required and also it should be unique.',
 	'quote_name_en'            => 'Quote name in english is required.',
 	'quote_name_ka'            => 'Quote name in georgian is required.',
-	'quote_movie_picture'      => 'Frame of the film is required.',
+	'quote_picture'            => 'Frame of the film is required.',
 ];

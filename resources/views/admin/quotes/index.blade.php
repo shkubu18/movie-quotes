@@ -9,17 +9,17 @@
 
             @foreach($quotes as $quote)
                 <x-dashboard.item :loop="$loop">
-                    <h2 class="mr-5 max-w-[300px] truncate font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
+                    <h2 class="mr-5 truncate font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
                     <div class="flex items-center">
                         <img
-                            class="mr-5 rounded h-[60px] w-[90px]"
-                            src="{{ asset('storage/' . $quote->movie_picture) }}"
+                            class="mr-5 rounded h-14 w-20"
+                            src="{{ asset('storage/' . $quote->picture) }}"
                             alt="movie picture"
                         />
-                        <a class="mr-5 text-indigo-600" href="/admin/quotes/{{ $quote->id }}/edit">
+                        <a class="mr-5 text-indigo-600" href="/quotes/{{ $quote->id }}/edit">
                             {{ __('dashboard.edit') }}
                         </a>
-                        <form action="/admin/quotes/{{ $quote->id }}" method="POST">
+                        <form action="/quotes/{{ $quote->id }}" method="POST">
                             @csrf
                             @method('DELETE')
 
