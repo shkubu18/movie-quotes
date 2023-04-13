@@ -10,8 +10,4 @@
             @csrf
         </form>
     </header>
-@else
-    <div class="flex justify-center">
-        <a class="mb-5 underline text-xl" href="{{ route('login.page') }}">{{ __('auth.login') }}</a>
-    </div>
 @endauth
