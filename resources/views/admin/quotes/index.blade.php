@@ -1,15 +1,25 @@
 <x-layout>
-    <x-move-back path="/" />
+    <x-move-back path="{{ route('quotes.show') }}" />
 
     <x-dashboard.container>
         <x-dashboard.title>{{ __('dashboard.quotes_dashboard') }}</x-dashboard.title>
 
         @if($quotes->count())
-            <x-dashboard.quantity>{{ __('hint.quotes_qty') . ": " . $quotes->count()  }}</x-dashboard.quantity>
+            <div class="flex justify-between text-gray-700 w-full mb-2 bg-slate-100 p-2.5 rounded-xl">
+                <x-dashboard.quantity>{{ __('hint.quotes_qty') . ": " . $quotes->count()  }}</x-dashboard.quantity>
+                <a class="underline" href="{{ route('quotes.create') }}">{{ __('header.add_quote') }}</a>
+            </div>
 
+            <div class="w-full flex justify-start mt-5 mb-1 ml-4">
+                <div class="flex text-indigo-600 w-1/2 justify-between">
+                    <p>{{ __('dashboard.quote_name') }}</p>
+                    <p class="mr-2.5">{{ __('dashboard.movie_name') }}</p>
+                </div>
+            </div>
             @foreach($quotes as $quote)
                 <x-dashboard.item :loop="$loop">
-                    <h2 class="mr-5 truncate font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
+                    <h2 class="mr-5 truncate w-36 font-medium">{{ $quote->getTranslation('name', app()->getLocale()) }}</h2>
+                    <h2 class="mr-5 truncate font-medium">{{ $quote->movie->getTranslation('name', app()->getLocale()) }}</h2>
                     <div class="flex items-center">
                         <img
                             class="mr-5 rounded h-14 w-20"
