@@ -1,5 +1,5 @@
 <x-layout>
-    <x-move-back path="/" />
+    <x-move-back path="{{ route('movies.index') }}" />
 
     <x-container>
             <h1 class="mb-10 text-3xl text-center">{{ __('movie_form.heading') }}</h1>

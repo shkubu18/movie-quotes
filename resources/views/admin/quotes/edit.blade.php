@@ -1,5 +1,5 @@
 <x-layout>
-    <x-move-back path="/quotes/dashboard" />
+    <x-move-back path="{{ route('quotes.index') }}" />
 
     @if($movies->count())
         <x-container>
