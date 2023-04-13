@@ -5,10 +5,10 @@
         <x-dashboard.title>{{ __('dashboard.movies_dashboard') }}</x-dashboard.title>
 
         @if($movies->count())
-            <div class="flex justify-between text-gray-700 w-full mb-2 bg-slate-100 p-2.5 rounded-xl">
-                <x-dashboard.quantity>{{ __('hint.movies_qty') . ": " . $movies->count()  }}</x-dashboard.quantity>
+            <x-dashboard.header>
+                <h2>{{ __('hint.movies_qty') . ": " . $movies->count()  }}</h2>
                 <a class="underline" href="{{ route('movies.create') }} ">{{ __('header.add_movie') }}</a>
-            </div>
+            </x-dashboard.header>
 
             <div class="w-full text-indigo-600 mt-5 mb-1 ml-4">
                 <p>{{ __('dashboard.movie_name') }}</p>
